@@ -10,13 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EXAMEN_Collaguazo_Tenezaca">
         <activity
-            android:name=".MJ_MainActivity2"
-            android:exported="false"
-            android:label="@string/title_activity_mj_main2"
-            android:theme="@style/Theme.EXAMEN_Collaguazo_Tenezaca.NoActionBar" />
+            android:name=".MJ_MainActivity_SEGUNDO"
+            android:exported="true" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity
             android:name=".MJ_MainActivity"
-            android:exported="false" />
+            android:exported="true" >
+        </activity>
+
+
     </application>
 
 </manifest>
