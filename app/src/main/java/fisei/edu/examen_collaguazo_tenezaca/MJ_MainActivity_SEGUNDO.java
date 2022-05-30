@@ -25,7 +25,7 @@ public class MJ_MainActivity_SEGUNDO extends AppCompatActivity {
     private ArrayList<String> datos;
     private ArrayAdapter<String> adaptador1;
     private ListView lv1;
-    private EditText et1,et2;
+    private EditText et1;
     private SharedPreferences prefe1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,7 @@ public class MJ_MainActivity_SEGUNDO extends AppCompatActivity {
         lv1.setAdapter(adaptador1);
 
         et1=(EditText)findViewById(R.id.et1);
-        et2=(EditText)findViewById(R.id.et2);
+
 
         lv1.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -46,8 +46,6 @@ public class MJ_MainActivity_SEGUNDO extends AppCompatActivity {
                 final int posicion=i;
 
                 AlertDialog.Builder dialogo1 = new AlertDialog.Builder(MJ_MainActivity_SEGUNDO.this);
-                dialogo1.setTitle("Importante");
-                dialogo1.setMessage("¿ Elimina este teléfono ?");
                 dialogo1.setCancelable(false);
                 dialogo1.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogo1, int id) {
@@ -81,12 +79,12 @@ public class MJ_MainActivity_SEGUNDO extends AppCompatActivity {
     }
 
     public void agregar(View v) {
-        datos.add(et1.getText().toString()+" : "+et2.getText().toString());
+        datos.add(et1.getText().toString());
         adaptador1.notifyDataSetChanged();
         SharedPreferences.Editor elemento=prefe1.edit();
-        elemento.putString(et1.getText().toString(),et2.getText().toString());
+
         elemento.commit();
         et1.setText("");
-        et2.setText("");
+
     }
 }
