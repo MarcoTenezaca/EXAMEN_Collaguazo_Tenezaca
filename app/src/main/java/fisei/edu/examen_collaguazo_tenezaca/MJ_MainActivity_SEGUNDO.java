@@ -21,6 +21,7 @@ public class MJ_MainActivity_SEGUNDO extends AppCompatActivity {
     private ArrayList<String> datos;
     private ArrayAdapter<String> adaptador1;
     private ListView lv1;
+    private ListView lv2;
     private EditText et1;
     private SharedPreferences prefe1;
     private Button buttonVolver;
@@ -32,6 +33,7 @@ public class MJ_MainActivity_SEGUNDO extends AppCompatActivity {
         leerSharedPreferences();
         adaptador1=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, datos);
         lv1=(ListView)findViewById(R.id.list1);
+        lv2= (ListView)findViewById(R.id.listaNormal);
         lv1.setAdapter(adaptador1);
 
 
@@ -43,14 +45,12 @@ public class MJ_MainActivity_SEGUNDO extends AppCompatActivity {
         buttonVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (datos.equals(null)){
-                    Toast.makeText(MJ_MainActivity_SEGUNDO.this, "DebeIngresar datos",Toast.LENGTH_LONG);
 
-                }else{
                     Intent intent = new Intent(MJ_MainActivity_SEGUNDO.this , MJ_MainActivity.class);
-                    intent.putStringArrayListExtra("lista numero",(ArrayList<String>) datos);
+                   intent.putStringArrayListExtra("listanumero",(ArrayList<String>) datos);
+                    //intent.putIntegerArrayListExtra("listanumero",(Integer).datos );
                     startActivity(intent);
-                }
+
 
             }
 

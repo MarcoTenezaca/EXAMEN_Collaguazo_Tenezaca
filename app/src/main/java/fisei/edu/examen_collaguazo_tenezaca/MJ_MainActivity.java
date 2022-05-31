@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 public class MJ_MainActivity extends AppCompatActivity {
     private ArrayList<String> datos2;
     private ListView lv1;
+    private ArrayAdapter<String> adaptador1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,8 +21,9 @@ public class MJ_MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         lv1=(ListView)findViewById(R.id.listaNormal);
         datos2 = new ArrayList<>();
-        String[] myStrings = intent.getStringArrayExtra("listaNormal");
 
+
+        String[] myStrings = intent.getStringArrayExtra("datos");
 
     }
     public void onClick(View view) {
