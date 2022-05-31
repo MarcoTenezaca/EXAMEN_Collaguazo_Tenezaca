@@ -1,6 +1,5 @@
 package fisei.edu.examen_collaguazo_tenezaca;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,19 +9,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-
 import java.util.ArrayList;
-
-
 import android.content.Context;
-import android.content.DialogInterface;
-
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Toast;
 
 import java.util.Map;
-import java.util.StringTokenizer;
+
 
 public class MJ_MainActivity_SEGUNDO extends AppCompatActivity {
     private ArrayList<String> datos;
@@ -40,54 +33,35 @@ public class MJ_MainActivity_SEGUNDO extends AppCompatActivity {
         adaptador1=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, datos);
         lv1=(ListView)findViewById(R.id.list1);
         lv1.setAdapter(adaptador1);
-// REGRESAR DATOS
-        buttonVolver.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
 
-            }
-
-
-
-
-        });
-        // FIN REGRESAR DATOS
         et1=(EditText)findViewById(R.id.et1);
         buttonVolver = findViewById(R.id.button_volver);
 
-        lv1.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+        // REGRESAR DATOS
+        buttonVolver.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                final int posicion=i;
+            public void onClick(View view) {
+                if (datos.equals(null)){
+                    Toast.makeText(MJ_MainActivity_SEGUNDO.this, "DebeIngresar datos",Toast.LENGTH_LONG);
 
-                AlertDialog.Builder dialogo1 = new AlertDialog.Builder(MJ_MainActivity_SEGUNDO.this);
-                dialogo1.setCancelable(false);
-                dialogo1.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialogo1, int id) {
-                        String s=datos.get(posicion);
-                        StringTokenizer tok1=new StringTokenizer(s,":");
-                        String nom=tok1.nextToken().trim();
-                        SharedPreferences.Editor elemento=prefe1.edit();
-                        elemento.remove(nom);
-                        elemento.commit();
+                }else{
+                    Intent intent = new Intent(MJ_MainActivity_SEGUNDO.this , MJ_MainActivity.class);
+                    intent.putStringArrayListExtra("lista numero",(ArrayList<String>) datos);
 
-                        datos.remove(posicion);
-                        adaptador1.notifyDataSetChanged();
-                    }
-                });
-                dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialogo1, int id) {
-                    }
-                });
-                dialogo1.show();
+                    startActivity(intent);
+                }
 
-                return false;
             }
+
+
+
         });
+                // FIN REGRESAR DATOS
     }
     private void leerSharedPreferences() {
-        prefe1=getSharedPreferences("datostelefonos", Context.MODE_PRIVATE);
+        prefe1=getSharedPreferences("datos", Context.MODE_PRIVATE);
         Map<String,?> claves = prefe1.getAll();
         for(Map.Entry<String,?> ele : claves.entrySet()){
             datos.add(ele.getKey()+" : " +ele.getValue().toString());
@@ -98,7 +72,6 @@ public class MJ_MainActivity_SEGUNDO extends AppCompatActivity {
         datos.add(et1.getText().toString());
         adaptador1.notifyDataSetChanged();
         SharedPreferences.Editor elemento=prefe1.edit();
-
         elemento.commit();
         et1.setText("");
 
