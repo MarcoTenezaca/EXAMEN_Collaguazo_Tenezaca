@@ -3,9 +3,11 @@ package fisei.edu.examen_collaguazo_tenezaca;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -17,6 +19,7 @@ import android.content.DialogInterface;
 
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import java.util.Map;
 import java.util.StringTokenizer;
@@ -27,6 +30,7 @@ public class MJ_MainActivity_SEGUNDO extends AppCompatActivity {
     private ListView lv1;
     private EditText et1;
     private SharedPreferences prefe1;
+    private Button buttonVolver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,9 +40,21 @@ public class MJ_MainActivity_SEGUNDO extends AppCompatActivity {
         adaptador1=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, datos);
         lv1=(ListView)findViewById(R.id.list1);
         lv1.setAdapter(adaptador1);
+// REGRESAR DATOS
+        buttonVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+
+            }
+
+
+
+
+        });
+        // FIN REGRESAR DATOS
         et1=(EditText)findViewById(R.id.et1);
-
+        buttonVolver = findViewById(R.id.button_volver);
 
         lv1.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -87,4 +103,7 @@ public class MJ_MainActivity_SEGUNDO extends AppCompatActivity {
         et1.setText("");
 
     }
+
+
+
 }
