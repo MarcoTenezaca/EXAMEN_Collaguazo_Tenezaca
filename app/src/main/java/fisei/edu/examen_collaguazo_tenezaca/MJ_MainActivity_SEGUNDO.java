@@ -49,7 +49,6 @@ public class MJ_MainActivity_SEGUNDO extends AppCompatActivity {
                 }else{
                     Intent intent = new Intent(MJ_MainActivity_SEGUNDO.this , MJ_MainActivity.class);
                     intent.putStringArrayListExtra("lista numero",(ArrayList<String>) datos);
-
                     startActivity(intent);
                 }
 
